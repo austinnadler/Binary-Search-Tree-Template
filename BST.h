@@ -10,7 +10,7 @@ using namespace std;
 template <typename K>
 class BST {
 private:
-    using Function = void(const K& key);
+    using Function = void(const K& key); // Function pointer to allow different actions upon visitation.
     class Node {
         public:
             Node* left;
@@ -20,7 +20,8 @@ private:
             Node(Node* const left, const K& key, Node* const right) 
             : left(left), key(key), right(right) 
             {}
-
+            
+            // These are helper methods for immediateSuccessor()
             bool isLeaf()               { return !this->left && !this->right; }
             bool hasLeftChildOnly()     { return this->left && !this->right;  }
             bool hasRightChildOnly()    { return !this->left && this->right;  }
@@ -30,10 +31,10 @@ private:
 
     Node* createNode(Node* const left, const K& key, Node* const right) {
         try {
-            return new Node(left, key, right); // This returns the address of the node so this method can be used:
+            return new Node(left, key, right); // This returns the address of the node so it can be added to the tree.
         }
-        catch (std::bad_alloc e) { // before->next = after->prev = createNode(before, element, after);
-            std::cerr << "Memory error adding to tree";
+        catch (std::bad_alloc e) { 
+            std::cerr << "Memory error adding to tree.";
             exit(1);
         }
     }
@@ -79,6 +80,7 @@ private:
     }
 
     K immediateSuccessor(Node*& node) {
+        cout << "FIXME: immediateSuccessor doesn't work properly" << endl;
         // Node* del = nullptr;
         K successor = K();
         if(node->left == nullptr) {
