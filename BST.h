@@ -5,6 +5,7 @@
 
 #include <string>
 #include <iostream>
+// FIXME: REMOVE NAMESPACE DECLARATION
 using namespace std;
 
 template <typename K>
