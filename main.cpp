@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
     BST<int> tree;
-    tree.insert(1);
+    tree.insert(50);
     tree.insert(4);
     tree.insert(9);
     tree.insert(100);
@@ -14,7 +14,7 @@ int main() {
     tree.insert(30);
 
     cout << "numNodes : " << tree.size() << endl;
-    tree.deleteK(4);
+    // tree.deleteK(4);
     cout << "Tree contains 1? (Expect: 1) : " << tree.contains(1) << endl;
     cout << "Tree contains 3? (Expect: 0) : " << tree.contains(3) << endl;
 
